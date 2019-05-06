@@ -69,7 +69,10 @@ void UART0_Init(uint8 UARTnumber){
 					
 					// Set the GPIO AFSEL bits for the appropriate pins B0 B1.
 					GPIO_PORTA_AFSEL_R |= GPIO_PB10_M;
-										
+								
+					// Configure PORTB_PCTL register to select the alternative function (UART1).
+					GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF00) | (GPIO_PCTL_PB1_U1TX | GPIO_PCTL_PB0_U1RX);
+								
 					// Enable PORTB Digital mode.
 					GPIO_PORTB_DEN_R |= GPIO_PB10_M;
 					
