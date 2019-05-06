@@ -4,7 +4,10 @@
 #include "typedefs.h"
 #include "tm4c123gh6pm.h"
 
-void UART0_Init(void);
+#define GPIO_PA10_M 0x03
+#define GPIO_PB10_M 0x03
+
+void UART0_Init(uint8 UARTnumber);
 
 uint8 UART0_Read(void);
 
