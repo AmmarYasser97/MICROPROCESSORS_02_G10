@@ -12,7 +12,7 @@
 *
 */
 
-void UART0_Init(uint8 UARTnumber){
+void UART_Init(uint8 UARTnumber){
 	
 	switch(UARTnumber)
 	{
@@ -79,3 +79,138 @@ void UART0_Init(uint8 UARTnumber){
 					break;
 		}
 }
+
+
+uint8 UART_Available(uint8 UART_number)
+{
+	volatile unsigned long *UART_flag;
+	switch (UART_number)
+	{
+	case 0:
+		UART_flag = &UART0_FR_R;
+		break;
+	case 1:
+		UART_flag = &UART1_FR_R;
+		break;
+	case 2:
+		UART_flag = &UART2_FR_R;
+		break;
+	case 3:
+		UART_flag = &UART3_FR_R;
+		break;
+	case 4:
+		UART_flag = &UART4_FR_R;
+		break;
+	case 5:
+		UART_flag = &UART5_FR_R;
+		break;
+	case 6:
+		UART_flag = &UART6_FR_R;
+		break;
+	case 7:
+		UART_flag = &UART7_FR_R;
+		break;
+
+	default:
+		UART_flag = &UART0_FR_R;
+		break;
+	}
+
+	// check RXFE bit
+	return !(*UART_flag & (1 << 4));
+}
+
+
+uint8 UART_Read(uint8 UART_number)
+{
+	volatile unsigned long *UART_data;
+	switch (UART_number)
+	{
+	case 0:
+		UART_data = &UART0_DR_R;
+		break;
+	case 1:
+		UART_data = &UART1_DR_R;
+		break;
+	case 2:
+		UART_data = &UART2_DR_R;
+		break;
+	case 3:
+		UART_data = &UART3_DR_R;
+		break;
+	case 4:
+		UART_data = &UART4_DR_R;
+		break;
+	case 5:
+		UART_data = &UART5_DR_R;
+		break;
+	case 6:
+		UART_data = &UART6_DR_R;
+		break;
+	case 7:
+		UART_data = &UART0_DR_R;
+		break;
+
+	default:
+		UART_data = &UART0_DR_R;
+		break;
+	}
+	while (!UART_Available(UART_number))
+		;
+
+	//return least 8 significant bits of data
+	return (uint8)((*UART_data) & 0xFF);
+}
+
+
+void UART_Write(uint8 UART_number, uint8 data)
+{
+	volatile unsigned long *UART_data;
+	volatile unsigned long *UART_flag;
+
+	switch (UART_number)
+	{
+	case 0:
+		UART_data = &UART0_DR_R;
+		UART_flag = &UART0_FR_R;
+		break;
+	case 1:
+		UART_data = &UART1_DR_R;
+		UART_flag = &UART1_FR_R;
+		break;
+	case 2:
+		UART_data = &UART2_DR_R;
+		UART_flag = &UART2_FR_R;
+		break;
+	case 3:
+		UART_data = &UART3_DR_R;
+		UART_flag = &UART3_FR_R;
+		break;
+	case 4:
+		UART_data = &UART4_DR_R;
+		UART_flag = &UART4_FR_R;
+		break;
+	case 5:
+		UART_data = &UART5_DR_R;
+		UART_flag = &UART5_FR_R;
+		break;
+	case 6:
+		UART_data = &UART6_DR_R;
+		UART_flag = &UART6_FR_R;
+		break;
+	case 7:
+		UART_data = &UART0_DR_R;
+		UART_flag = &UART7_FR_R;
+		break;
+
+	default:
+		UART_data = &UART0_DR_R;
+		UART_flag = &UART0_FR_R;
+		break;
+	}
+
+	while ((*UART_flag) & (1 << 5))
+		;
+	*UART_data = data;
+}
+

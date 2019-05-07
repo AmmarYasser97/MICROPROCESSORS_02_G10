@@ -7,12 +7,12 @@
 #define GPIO_PA10_M 0x03
 #define GPIO_PB10_M 0x03
 
-void UART0_Init(uint8 UARTnumber);
+void UART_Init(uint8 UARTnumber);
 
-uint8 UART0_Read(void);
+uint8 UART_Read(uint8 UART_number);
 
-void UART0_Write(uint8 data);
+void UART_Write(uint8 UART_number, uint8 data);
 
-uint8 UART0_Available(void);
+uint8 UART_Available(uint8 UART_number);
 
 #endif // __UART_H__
