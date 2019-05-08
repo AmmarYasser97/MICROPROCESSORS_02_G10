@@ -12,4 +12,4 @@ void move_step(int dir);
 //move n steps with dir
 void move_n_s(int n , int dir);
 
-void add_to_INT_array();
+void move_30_deg(int dir);
