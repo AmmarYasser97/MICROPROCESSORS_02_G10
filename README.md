@@ -18,6 +18,9 @@ The system main components are:
 - Servo Motor
 - Potentiometer
 
+## Layers Report
+-[Click Here!](https://docs.google.com/document/d/1sdOux_4btl9iqQ43Cl9-vioZpm8LveC3fN1KwsFGH6w/edit?usp=sharing)
+
 ## Authors
 
 * **Ammar Yasser** - [AmmarYasser97](https://github.com/AmmarYasser97)
@@ -26,5 +29,6 @@ The system main components are:
 * **Omar Ahmed** - [omarahmad293](https://github.com/omarahmad293)
 * **Lames Emad** - [lameesemad1996](https://github.com/lameesemad1996)
 * **Matthew Email** - [Aominee](https://github.com/Aominee)
+* **Abdelrahman Wael Helaly** - [Helaly96](https://github.com/Helaly96)
 
-See also the list of [contributors](https://github.com/omarahmad293/MICROPROCESSORS_01_G22/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/graphs/contributors) who participated in this project.
