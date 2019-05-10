@@ -14,10 +14,13 @@ maximum ADC voltage range (VREFP - VREFN):
 
 TEMP = 147.5 - ((75 * (VREFP - VREFN) × ADCCODE) / 4096)
 */
-
-uint8 Temp_Read(uint8 pin, uint16 mode)
+void Temp_Init(uint8 channel, uint16 mode)
 {
-    ADC0_Init(pin);
-    ADC0_SS3_Init(pin, mode, ENABLE);
+    ADC0_Init(channel);
+    ADC0_SS3_Init(channel, mode, ENABLE);
+}
+
+uint8 Temp_Read(void)
+{
     return (147.5 - ((75 * 3.3 * ADC0_SS3_Read()) / 4096));
 }

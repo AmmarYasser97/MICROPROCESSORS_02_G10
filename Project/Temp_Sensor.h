@@ -6,6 +6,7 @@
 #include "ADC.h"
 
 //Prototypes
-uint8 Temp_Read(uint8 pin, uint16 mode);
+void Temp_Init(uint8 channel, uint16 mode);
+uint8 Temp_Read(void);
 
 #endif // __TEMP_H__

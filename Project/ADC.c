@@ -65,19 +65,19 @@ faulty operation in the ADC module.
 
 //ADC Initilization
 
-void ADC0_Init(uint8 pin)
+void ADC0_Init(uint8 channel)
 {
     //1. Enable the ADC clock using the RCGCADC register (see page 352).
     SYSCTL_RCGCADC_R |= SYSCTL_RCGCADC_R0;
 
-    switch (pin)
+    switch (channel)
     {
     case AIN0:
         //2. Enable the clock to the appropriate GPIO modules via the RCGCGPIO register (see page 340).
         //To find out which GPIO ports to enable, refer to “Signal Description” on page 801.
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
         //Delay for the clock
-        pin = 0;
+        channel = 0;
         //3. Set the GPIO AFSEL bits for the ADC input pins (see page 671). To determine which GPIOs to
         //configure, see Table 23-4 on page 1344.
         GPIO_PORTE_AFSEL_R |= PIN3;
@@ -94,7 +94,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN1:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
-        pin = 0;
+        channel = 0;
         GPIO_PORTE_AFSEL_R |= PIN2;
         GPIO_PORTE_DEN_R &= ~(PIN2);
         GPIO_PORTE_AMSEL_R |= PIN2;
@@ -102,7 +102,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN2:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
-        pin = 0;
+        channel = 0;
         GPIO_PORTE_AFSEL_R |= PIN1;
         GPIO_PORTE_DEN_R &= ~(PIN1);
         GPIO_PORTE_AMSEL_R |= PIN1;
@@ -110,7 +110,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN3:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
-        pin = 0;
+        channel = 0;
         GPIO_PORTE_AFSEL_R |= PIN0;
         GPIO_PORTE_DEN_R &= ~(PIN0);
         GPIO_PORTE_AMSEL_R |= PIN0;
@@ -118,7 +118,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN4:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
-        pin = 0;
+        channel = 0;
         GPIO_PORTD_AFSEL_R |= PIN3;
         GPIO_PORTD_DEN_R &= ~(PIN3);
         GPIO_PORTD_AMSEL_R |= PIN3;
@@ -126,7 +126,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN5:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
-        pin = 0;
+        channel = 0;
         GPIO_PORTD_AFSEL_R |= PIN2;
         GPIO_PORTD_DEN_R &= ~(PIN2);
         GPIO_PORTD_AMSEL_R |= PIN2;
@@ -134,7 +134,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN6:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
-        pin = 0;
+        channel = 0;
         GPIO_PORTD_AFSEL_R |= PIN1;
         GPIO_PORTD_DEN_R &= ~(PIN1);
         GPIO_PORTD_AMSEL_R |= PIN1;
@@ -142,7 +142,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN7:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
-        pin = 0;
+        channel = 0;
         GPIO_PORTD_AFSEL_R |= PIN0;
         GPIO_PORTD_DEN_R &= ~(PIN0);
         GPIO_PORTD_AMSEL_R |= PIN0;
@@ -150,7 +150,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN8:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
-        pin = 0;
+        channel = 0;
         GPIO_PORTE_AFSEL_R |= PIN5;
         GPIO_PORTE_DEN_R &= ~(PIN5);
         GPIO_PORTE_AMSEL_R |= PIN5;
@@ -158,7 +158,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN9:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
-        pin = 0;
+        channel = 0;
         GPIO_PORTE_AFSEL_R |= PIN4;
         GPIO_PORTE_DEN_R &= ~(PIN4);
         GPIO_PORTE_AMSEL_R |= PIN4;
@@ -166,7 +166,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN10:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R1;
-        pin = 0;
+        channel = 0;
         GPIO_PORTB_AFSEL_R |= PIN5;
         GPIO_PORTB_DEN_R &= ~(PIN5);
         GPIO_PORTB_AMSEL_R |= PIN5;
@@ -174,7 +174,7 @@ void ADC0_Init(uint8 pin)
 
     case AIN11:
         SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R1;
-        pin = 0;
+        channel = 0;
         GPIO_PORTB_AFSEL_R |= PIN4;
         GPIO_PORTB_DEN_R &= ~(PIN4);
         GPIO_PORTB_AMSEL_R |= PIN4;
@@ -185,7 +185,7 @@ void ADC0_Init(uint8 pin)
 
 //Sample Sequencer Initilization for ADC0 Sample Sequencer 3
 
-void ADC0_SS3_Init(uint8 pin, uint16 mode, uint8 temp_en)
+void ADC0_SS3_Init(uint8 channel, uint16 mode, uint8 temp_en)
 {
     //1. Ensure that the sample sequencer is disabled by clearing the corresponding ASENn bit in the
     //ADCACTSS register. Programming of the sample sequencers is allowed without having them
@@ -197,8 +197,8 @@ void ADC0_SS3_Init(uint8 pin, uint16 mode, uint8 temp_en)
     ADC0_ACTSS_R &= ~ADC_ACTSS_ASEN3;
     //2. Configure the trigger event for the sample sequencer in the ADCEMUX register.
     //Use the defines to use a certain trigger, we clear the mask first before setting the mode
-    ADC0_ACTSS_R |= ADC_ACTSS_ASEN3;
     ADC0_EMUX_R &= ~ADC_EMUX_EM3_ALWAYS;
+    ADC0_EMUX_R |= mode;
     //3. When using a PWM generator as the trigger source, use the ADC Trigger Source Select
     //(ADCTSSEL) register to specify in which PWM module the generator is located. The default
     //register reset selects PWM module 0 for all generators.
@@ -207,7 +207,7 @@ void ADC0_SS3_Init(uint8 pin, uint16 mode, uint8 temp_en)
     //4. For each sample in the sample sequence, configure the corresponding input source in the
     //ADCSSMUXn register.
 
-    ADC0_SSMUX3_R |= pin;
+    ADC0_SSMUX3_R |= channel;
 
     //5. For each sample in the sample sequence, configure the sample control bits in the corresponding
     //nibble in the ADCSSCTLn register. When programming the last nibble, ensure that the END bit
@@ -230,17 +230,19 @@ void ADC0_SS3_Init(uint8 pin, uint16 mode, uint8 temp_en)
     ADC0_IM_R &= ~(ADC_IM_MASK3);
     //7. Enable the sample sequencer logic by setting the corresponding ASENn bit in the ADCACTSS
     //register.
-    ADC0_EMUX_R |= mode;
+    ADC0_ACTSS_R |= ADC_ACTSS_ASEN3;
     return;
 }
 
 uint16 ADC0_SS3_Read()
 {
+    //This is only if the trigger is default
     ADC0_PSSI_R |= ADC_PSSI_SS3;
     //poling on raw interrupt
     while (!(ADC0_RIS_R & ADC_RIS_INR3))
         ;
+    uint16 result = ADC0_SSFIFO3_R & ADC_SSFIFO3_DATA_M;
     //Clear flag before returning the value
     ADC0_ISC_R |= ADC_ISC_IN3;
-    return ADC0_SSFIFO3_R & ADC_SSFIFO0_DATA_M;
+    return result;
 }

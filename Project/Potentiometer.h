@@ -6,6 +6,7 @@
 #include "ADC.h"
 
 //Prototypes
-uint16 Pot_Read(uint8 pin, uint16 mode);
+void Pot_Init(uint8 channel, uint16 mode);
+uint16 Pot_Read(void);
 
 #endif // __POT_H__

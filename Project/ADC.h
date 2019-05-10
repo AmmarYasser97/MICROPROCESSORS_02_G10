@@ -31,8 +31,8 @@
 #define DISABLE 0
 
 //Prototypes
-void ADC0_Init(uint8 pin);
-void ADC0_SS3_Init(uint8 pin, uint16 mode, uint8 temp_en);
-uint16 ADC0_SS3_Read();
+void ADC0_Init(uint8 channel);
+void ADC0_SS3_Init(uint8 channel, uint16 mode, uint8 temp_en);
+uint16 ADC0_SS3_Read(void);
 
 #endif // __ADC_H__
