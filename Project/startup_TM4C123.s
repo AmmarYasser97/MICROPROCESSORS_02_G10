@@ -934,6 +934,17 @@ PWM1_FAULT_Handler\
                 ENDP
 
                 ALIGN
+				
+				EXPORT  DisableInterrupts
+				EXPORT  EnableInterrupts
+
+DisableInterrupts
+				CPSID  I
+				BX     LR
+
+EnableInterrupts
+				CPSIE  I
+				BX     LR
 
 
 ; User Initial Stack & Heap
