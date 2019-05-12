@@ -1,6 +1,6 @@
 #include "GPIO.H"
 
-void GPIO_INIT(uint8 c){
+void GPIO_INIT(char c){
 	
 	switch(c){
 		case'A':
@@ -67,7 +67,7 @@ void GPIO_INIT(uint8 c){
 	
 }
 
-void GPIO_set_pin_direction(uint8 c, uint16 MASK, Pin_Direction d){
+void set_pin_direction(char c, unsigned int MASK, Pin_Direction d){
 	
 	switch(c){
 		case'A':
@@ -97,7 +97,7 @@ void GPIO_set_pin_direction(uint8 c, uint16 MASK, Pin_Direction d){
 	
 	}
 }
-void GPIO_set_pull_direction(uint8 c, uint16 MASK, Pull_Direction d){
+void set_pull_direction(char c, unsigned int MASK, Pull_Direction d){
 	
 		switch(c){
 		case'A':
@@ -127,7 +127,7 @@ void GPIO_set_pull_direction(uint8 c, uint16 MASK, Pull_Direction d){
 	
 	}
 }
-//void DEN(uint8 c, uint16 MASK){
+//void DEN(char c, unsigned int MASK){
 //	switch(c){
 //		case'A':
 //			GPIO_PORTA_DEN_R|=MASK;
@@ -149,36 +149,30 @@ void GPIO_set_pull_direction(uint8 c, uint16 MASK, Pull_Direction d){
 //			break;
 //	}
 //}
-uint16 GPIO_D_Read(uint8 c, uint16 MASK){
+unsigned int D_Read(char c, unsigned int MASK){
 	switch(c){
 		case'A':
 			if(GPIO_PORTA_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'B':
 			if(GPIO_PORTB_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'C':
 			if(GPIO_PORTC_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'D':
 			if(GPIO_PORTD_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'E':
 			if(GPIO_PORTE_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'F':
 			if(GPIO_PORTF_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		default: return 0;
 	}
 }
-void GPIO_D_Write(uint8 c, uint16 MASK, Write_Value w){
+void D_Write(char c, unsigned int MASK, Write_Value w){
 		switch(c){
 		case'A':
 			if(w) GPIO_PORTA_DATA_R|=MASK;
@@ -206,7 +200,7 @@ void GPIO_D_Write(uint8 c, uint16 MASK, Write_Value w){
 			break;
 	}
 }
-void GPIO_toggle(uint8 c, uint16 MASK){
+void toggle(char c, unsigned int MASK){
 	switch(c){
 		case 'A':
 			GPIO_PORTA_DATA_R ^=MASK;
@@ -226,57 +220,6 @@ void GPIO_toggle(uint8 c, uint16 MASK){
 		case 'F':
 			GPIO_PORTF_DATA_R ^=MASK;
 			break;
-	}
-}
-void GPIO_Interrupt_INIT(uint8 c){
-	switch(c){
-		case'A':
-			GPIO_PORTA_IM_R=0xFF; //enable port interrupt
-			GPIO_PORTA_IS_R=0; //set enable to detect edges
-			GPIO_PORTA_ICR_R=0xFF; //clears values of RIS and MIS
-			GPIO_PORTA_IBE_R=0; //disable both edges detection
-			GPIO_PORTA_IEV_R=0xFF; // detect rising edge;
-			NVIC_EN0_R |= (1 << 1);
-	
-	case'B':
-			GPIO_PORTB_IM_R=0xFF; //enable port interrupt
-			GPIO_PORTB_IS_R=0; //set enable to detect edges
-			GPIO_PORTB_ICR_R=0xFF; //clears values of RIS and MIS
-			GPIO_PORTB_IBE_R=0; //disable both edges detection
-			GPIO_PORTB_IEV_R=0xFF; // detect rising edge;
-			NVIC_EN0_R |= (1 << 2);
-	
-case'C':
-			GPIO_PORTC_IM_R=0xFF; //enable port interrupt
-			GPIO_PORTC_IS_R=0; //set enable to detect edges
-			GPIO_PORTC_ICR_R=0xFF; //clears values of RIS and MIS
-			GPIO_PORTC_IBE_R=0; //disable both edges detection
-			GPIO_PORTC_IEV_R=0xFF; // detect rising edge;
-			NVIC_EN0_R |= (1 << 3);
-	
-	case'D':
-			GPIO_PORTD_IM_R=0xFF; //enable port interrupt
-			GPIO_PORTD_IS_R=0; //set enable to detect edges
-			GPIO_PORTD_ICR_R=0xFF; //clears values of RIS and MIS
-			GPIO_PORTD_IBE_R=0; //disable both edges detection
-			GPIO_PORTD_IEV_R=0xFF; // detect rising edge;
-			NVIC_EN0_R |= (1 << 4);
-	
-	case'E':
-			GPIO_PORTE_IM_R=0xFF; //enable port interrupt
-			GPIO_PORTE_IS_R=0; //set enable to detect edges
-			GPIO_PORTE_ICR_R=0xFF; //clears values of RIS and MIS
-			GPIO_PORTE_IBE_R=0; //disable both edges detection
-			GPIO_PORTE_IEV_R=0xFF; // detect rising edge;
-			NVIC_EN0_R |= (1 << 5);
-	
-	case'F':
-			GPIO_PORTF_IM_R=0xFF; //enable port interrupt
-			GPIO_PORTF_IS_R=0; //set enable to detect edges
-			GPIO_PORTF_ICR_R=0xFF; //clears values of RIS and MIS
-			GPIO_PORTF_IBE_R=0; //disable both edges detection
-			GPIO_PORTF_IEV_R=0xFF; // detect rising edge;
-			NVIC_EN0_R |= (1 << 30);
 	}
 }
 

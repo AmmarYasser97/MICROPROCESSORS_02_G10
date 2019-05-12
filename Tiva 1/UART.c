@@ -12,7 +12,7 @@
 *
 */
 
-void UART0_Init(uint8 UARTnumber){
+void UART_Init(uint8 UARTnumber){
 	
 	switch(UARTnumber)
 	{

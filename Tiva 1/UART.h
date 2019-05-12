@@ -15,4 +15,7 @@ void UART_Write(uint8 UART_number, uint8 data);
 
 uint8 UART_Available(uint8 UART_number);
 
+void UART0_Init(void);
+
+
 #endif // __UART_H__
