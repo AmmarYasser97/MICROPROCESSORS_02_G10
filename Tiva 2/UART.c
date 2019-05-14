@@ -57,6 +57,12 @@ void UART_Init(uint8 UARTnumber){
 					// Enable the clock to the appropriate GPIO module via the RCGCGPIO register.
 					SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R1;
 					
+					// Set the GPIO AFSEL bits for the appropriate pins B0 B1.
+					GPIO_PORTB_AFSEL_R |= GPIO_PB10_M;
+								
+					// Configure PORTB_PCTL register to select the alternative function (UART1).
+					GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF00) | (GPIO_PCTL_PB1_U1TX | GPIO_PCTL_PB0_U1RX);
+
 					// Disable the UART by clearing the UARTEN bit in the UARTCTL register
 					UART1_CTL_R &= ~UART_CTL_UARTEN;
 					
@@ -70,11 +76,8 @@ void UART_Init(uint8 UARTnumber){
 					// Enable the UART by setting the UARTEN bit in the UARTCTL register.
 					UART1_CTL_R |= (UART_CTL_RXE | UART_CTL_TXE | UART_CTL_UARTEN);
 													
-					// Set the GPIO AFSEL bits for the appropriate pins B0 B1.
-					GPIO_PORTB_AFSEL_R |= GPIO_PB10_M;
-								
-					// Configure PORTB_PCTL register to select the alternative function (UART1).
-					GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF00) | (GPIO_PCTL_PB1_U1TX | GPIO_PCTL_PB0_U1RX);
+					// Configure the UART clock source by writing to the UARTCC register.	
+					UART1_CC_R |= 0x0;
 
 					// Enable PORTB Digital mode.
 					GPIO_PORTB_DEN_R |= GPIO_PB10_M;
@@ -87,8 +90,7 @@ void UART_Init(uint8 UARTnumber){
 					
 					// Enable the clock to the appropriate GPIO module via the RCGCGPIO register.
 					SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
-
-				
+					
 					// Set the GPIO AFSEL bits for the appropriate pins B0 B1.
 					GPIO_PORTE_AFSEL_R |= GPIO_PB10_M;
 								
@@ -108,6 +110,9 @@ void UART_Init(uint8 UARTnumber){
 					// Enable the UART by setting the UARTEN bit in the UARTCTL register.
 					UART7_CTL_R |= (UART_CTL_RXE | UART_CTL_TXE | UART_CTL_UARTEN);
 													
+					// Configure the UART clock source by writing to the UARTCC register.	
+					UART7_CC_R |= 0x0;
+
 					// Enable PORTB Digital mode.
 					GPIO_PORTE_DEN_R |= GPIO_PB10_M;
 					
@@ -158,6 +163,7 @@ uint8 UART_Available(uint8 UART_number)
 uint8 UART_Read(uint8 UART_number)
 {
 	volatile unsigned long *UART_data;
+	
 	switch (UART_number)
 	{
 	case 0:
@@ -182,15 +188,14 @@ uint8 UART_Read(uint8 UART_number)
 		UART_data = &UART6_DR_R;
 		break;
 	case 7:
-		UART_data = &UART0_DR_R;
+		UART_data = &UART7_DR_R;
 		break;
 
-	default:
-		UART_data = &UART0_DR_R;
-		break;
+	//default:
+		//UART_data = &UART0_DR_R;
+		//break;
 	}
-	while (!UART_Available(UART_number))
-		;
+	while (!UART_Available(UART_number));
 
 	//return least 8 significant bits of data
 	return (uint8)((*UART_data) & 0xFF);
@@ -233,7 +238,7 @@ void UART_Write(uint8 UART_number, uint8 data)
 		UART_flag = &UART6_FR_R;
 		break;
 	case 7:
-		UART_data = &UART0_DR_R;
+		UART_data = &UART7_DR_R;
 		UART_flag = &UART7_FR_R;
 		break;
 

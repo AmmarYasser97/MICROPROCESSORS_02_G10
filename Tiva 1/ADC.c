@@ -236,7 +236,7 @@ void ADC0_SS3_Init(uint8 channel, uint16 mode, uint8 temp_en)
 
 uint16 ADC0_SS3_Read()
 {
-		uint16 result;
+	uint16 result;
     //This is only if the trigger is default
     ADC0_PSSI_R |= ADC_PSSI_SS3;
     //poling on raw interrupt

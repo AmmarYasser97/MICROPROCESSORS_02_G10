@@ -154,27 +154,21 @@ uint16 GPIO_D_Read(uint8 c, uint16 MASK){
 		case'A':
 			if(GPIO_PORTA_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'B':
 			if(GPIO_PORTB_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'C':
 			if(GPIO_PORTC_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'D':
 			if(GPIO_PORTD_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'E':
 			if(GPIO_PORTE_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		case'F':
 			if(GPIO_PORTF_DATA_R & MASK) return 1;
 			else return 0;
-			break;
 		default: return 0;
 	}
 }
@@ -275,8 +269,42 @@ case'C':
 			GPIO_PORTF_IS_R=0; //set enable to detect edges
 			GPIO_PORTF_ICR_R=0xFF; //clears values of RIS and MIS
 			GPIO_PORTF_IBE_R=0; //disable both edges detection
-			GPIO_PORTF_IEV_R=0x00; // detect rising edge;
+			GPIO_PORTF_IEV_R=0x00; // detect FALLING edge;
 			NVIC_EN0_R |= (1 << 30);
 	}
+}
+
+void DIO_Set_Pin(uint8 port_index,int pin_index)
+{
+	switch(pin_index)
+	{
+		case 0 : GPIO_D_Write(port_index,0x01,HIGH);
+		case 1 : GPIO_D_Write(port_index,0x02,HIGH);
+		case 2 : GPIO_D_Write(port_index,0x04,HIGH);
+		case 3 : GPIO_D_Write(port_index,0x08,HIGH);
+		case 4 : GPIO_D_Write(port_index,0x10,HIGH);
+		case 5 : GPIO_D_Write(port_index,0x20,HIGH);
+		case 6 : GPIO_D_Write(port_index,0x40,HIGH);
+		case 7 : GPIO_D_Write(port_index,0x80,HIGH);
+			
+	}
+	
+}
+
+void DIO_Clear_Pin(uint8 port_index,int pin_index)
+{
+	switch(pin_index)
+	{
+		case 0 : GPIO_D_Write(port_index,0x01,LOW);
+		case 1 : GPIO_D_Write(port_index,0x02,LOW);
+		case 2 : GPIO_D_Write(port_index,0x04,LOW);
+		case 3 : GPIO_D_Write(port_index,0x08,LOW);
+		case 4 : GPIO_D_Write(port_index,0x10,LOW);
+		case 5 : GPIO_D_Write(port_index,0x20,LOW);
+		case 6 : GPIO_D_Write(port_index,0x40,LOW);
+		case 7 : GPIO_D_Write(port_index,0x80,LOW);
+			
+	}
+	
 }
 

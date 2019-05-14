@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Project</TargetName>
+      <TargetName>prj7</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
@@ -45,7 +45,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>Project</OutputName>
+          <OutputName>prj7</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -104,7 +104,7 @@
           <SimDllName>SARMCM3.DLL</SimDllName>
           <SimDllArguments>-MPU</SimDllArguments>
           <SimDlgDll>DCM.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM4</SimDlgDllArguments>
+          <SimDlgDllArguments>-pCM4 -dLaunchPadDLL</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
           <TargetDllArguments>-MPU</TargetDllArguments>
           <TargetDlgDll>TCM.DLL</TargetDlgDll>
@@ -217,7 +217,7 @@
             <hadIRAM>1</hadIRAM>
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
-            <RvdsVP>2</RvdsVP>
+            <RvdsVP>1</RvdsVP>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -403,7 +403,7 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Source Group 1</GroupName>
+          <GroupName>src</GroupName>
           <Files>
             <File>
               <FileName>startup_TM4C123.s</FileName>
@@ -416,24 +416,9 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>tm4c123gh6pm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\tm4c123gh6pm.h</FilePath>
-            </File>
-            <File>
-              <FileName>typedefs.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\typedefs.h</FilePath>
-            </File>
-            <File>
-              <FileName>UART.c</FileName>
+              <FileName>ADC.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\UART.c</FilePath>
-            </File>
-            <File>
-              <FileName>UART.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\UART.h</FilePath>
+              <FilePath>.\ADC.c</FilePath>
             </File>
             <File>
               <FileName>GPIO.c</FileName>
@@ -441,14 +426,99 @@
               <FilePath>.\GPIO.c</FilePath>
             </File>
             <File>
+              <FileName>Potentiometer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Potentiometer.c</FilePath>
+            </File>
+            <File>
+              <FileName>Temp_Sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Temp_Sensor.c</FilePath>
+            </File>
+            <File>
               <FileName>Timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Timer.c</FilePath>
             </File>
             <File>
+              <FileName>UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys-tic-timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sys-tic-timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\motor_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>LedController.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LedController.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>include</GroupName>
+          <Files>
+            <File>
+              <FileName>tm4c123gh6pm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\tm4c123gh6pm.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ADC.h</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\GPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>Potentiometer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Potentiometer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Temp_Sensor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Temp_Sensor.h</FilePath>
+            </File>
+            <File>
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>typedefs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\typedefs.h</FilePath>
+            </File>
+            <File>
+              <FileName>UART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\UART.h</FilePath>
+            </File>
+            <File>
+              <FileName>motor_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\motor_driver.h</FilePath>
+            </File>
+            <File>
+              <FileName>sys-tic-timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\sys-tic-timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>LedController.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LedController.h</FilePath>
             </File>
           </Files>
         </Group>

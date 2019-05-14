@@ -13,7 +13,7 @@ void Periodic_Timer_Init(uint32 TimerNo)
 	//choose the timer to be a count-down timer (deassert bit 4)
 	TIMER0_TAMR_R &= ~(0x00000010);
 	//set the value at which the timer would start counting : TIMER_LOAD_VAL
-	TIMER0_TAILR_R = TimerNo;
+	TIMER0_TAILR_R = TIMER_LOAD_VAL;
 	//enable timer0 match interrupt (assert bit 5)
 	TIMER0_TAMR_R |= 0x00000020;
 	//enable timer0 time-out interrupt mask

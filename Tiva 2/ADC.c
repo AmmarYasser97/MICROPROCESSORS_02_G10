@@ -246,4 +246,5 @@ uint16 ADC0_SS3_Read()
     //Clear flag before returning the value
     ADC0_ISC_R |= ADC_ISC_IN3;
     return result;
+
 }

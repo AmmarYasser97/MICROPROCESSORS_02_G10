@@ -230,10 +230,7 @@ __Vectors_Size  EQU     __Vectors_End - __Vectors
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-                IMPORT  SystemInit
                 IMPORT  __main
-                LDR     R0, =SystemInit
-                BLX     R0
                 LDR     R0, =__main
                 BX      R0
                 ENDP
@@ -934,7 +931,8 @@ PWM1_FAULT_Handler\
                 ENDP
 
                 ALIGN
-				
+
+
 				EXPORT  DisableInterrupts
 				EXPORT  EnableInterrupts
 
@@ -945,7 +943,6 @@ DisableInterrupts
 EnableInterrupts
 				CPSIE  I
 				BX     LR
-
 
 ; User Initial Stack & Heap
 

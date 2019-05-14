@@ -445,6 +445,21 @@
               <FileType>1</FileType>
               <FilePath>.\UART.c</FilePath>
             </File>
+            <File>
+              <FileName>sys-tic-timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sys-tic-timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\motor_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LCD.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -489,6 +504,21 @@
               <FileName>UART.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\UART.h</FilePath>
+            </File>
+            <File>
+              <FileName>motor_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\motor_driver.h</FilePath>
+            </File>
+            <File>
+              <FileName>sys-tic-timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\sys-tic-timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>LCD.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LCD.h</FilePath>
             </File>
           </Files>
         </Group>

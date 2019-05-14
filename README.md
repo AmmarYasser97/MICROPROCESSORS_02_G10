@@ -18,6 +18,11 @@ The system main components are:
 - Servo Motor
 - Potentiometer
 
+## Tivas
+
+* **TIVA 1 ** - [will be be the one connected to the motor and the LED]
+* **TIVA 2 ** - [will be be the one Potentiometer and the Buttons.]
+
 ## Layers Report
 -[Click Here!](https://docs.google.com/document/d/1sdOux_4btl9iqQ43Cl9-vioZpm8LveC3fN1KwsFGH6w/edit?usp=sharing)
 
