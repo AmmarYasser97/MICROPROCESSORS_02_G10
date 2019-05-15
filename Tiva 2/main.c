@@ -25,10 +25,10 @@ int main (void)
 	{
 		Data_Recieved = UART_Read(7);
 		test = Data_Recieved;
-		if (Data_Recieved > 20 && Data_Recieved < 40)
-		{
-			GPIO_toggle('F', 0x02);
-		}
+		//if (Data_Recieved > 20 && Data_Recieved < 40)
+		//{
+		//	GPIO_toggle('F', 0x02);
+		//}
 		
 		UART_Write(0, '0' + test/100);
 		test %= 100;
@@ -39,9 +39,7 @@ int main (void)
 		UART_Write(0, '0' + test);
 		UART_Write(0, ' ');
 		
-		//LCD_sendInt(Data_Recieved);
-		
-		LCD_sendInt(99);
+		LCD_sendInt(Data_Recieved);
 	}
 	
 }
@@ -65,7 +63,7 @@ void TIMER0A_Handler(void)
 
 void GPIOF_Handler(void)
 {
-	GPIO_toggle('F', PIN1);
+	//GPIO_toggle('F', PIN1);
 
 	if(GPIO_PORTF_RIS_R &PIN0)
 	{
@@ -81,6 +79,7 @@ void GPIOF_Handler(void)
 void system_init(void)
 {
 	EnableInterrupts();
+	GPIO_INIT('E');
 	//Timer_init();
 	sys_tic_init(50);
 	UART_Init(7);
@@ -91,6 +90,8 @@ void system_init(void)
 	GPIO_INIT('F');
 	GPIO_Interrupt_INIT('F');
 	GPIO_set_pin_direction('F', PIN1, OUT);
+	GPIO_set_pin_direction('F', PIN2, OUT);
+	GPIO_set_pin_direction('F', PIN3, OUT);
 	GPIO_set_pin_direction('F',PIN0,IN);
 	GPIO_set_pin_direction('F',PIN4,IN);
 	GPIO_set_pull_direction('F',PIN0,UP);
@@ -110,14 +111,14 @@ void system_init(void)
 	
 	GPIO_set_pull_direction('B', 0xFF, UP);
 	
-	GPIO_set_pin_direction('D', PIN2, OUT);
-	GPIO_set_pin_direction('D', PIN3, OUT);
-	GPIO_set_pin_direction('D', PIN1, OUT);
+	GPIO_set_pin_direction('E', PIN2, OUT);
+	GPIO_set_pin_direction('E', PIN3, OUT);
+	GPIO_set_pin_direction('E', PIN4, OUT);
 	
 	//Direction
 	//GPIO_set_pin_direction('F', 0x0F, OUT);
 	//Write
-	GPIO_D_Write('F',PIN1,HIGH);
+	//GPIO_D_Write('F',PIN1,HIGH);
 	Pot_Init(AIN8, ADC_EMUX_EM3_PROCESSOR);
 	LCD_init();
 	LCD_clearScreen();	

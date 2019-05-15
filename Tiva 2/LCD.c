@@ -21,14 +21,15 @@ void LCD_init(void)
 		//delay_ms(1);
 		//Port_SetPinDirection(PORT_E, LCD_CRTL_MASK, PORT_PIN_OUT);
 		//Port_SetPinDirection(PORT_D, 0xFF, PORT_PIN_OUT);
-		LCD_sendCommand(0x30);
+		LCD_sendCommand(0x38);
 		sys_tic_delay_ms(5);
-		LCD_sendCommand(0x30);
-		sys_tic_delay_ms(1);
-		LCD_sendCommand(0x08);
-		LCD_sendCommand(0x01);
-		LCD_sendCommand(0x06);
 		LCD_sendCommand(0x0E);
+		LCD_sendCommand(0x01);
+		sys_tic_delay_ms(1);
+		//LCD_sendCommand(0x08);
+		//LCD_sendCommand(0x01);
+		//LCD_sendCommand(0x06);
+		
 
 }
 
@@ -57,7 +58,7 @@ char* itoa(int value, char* result, int base) {
 			*ptr1++ = tmp_char;
 		}
 		return result;
-	}
+	}	
 
 
 void LCD_sendInt(uint16 number){
@@ -73,12 +74,12 @@ void LCD_sendInt(uint16 number){
 	for( i=0; i<n; i++)
 	{
 		GPIO_PORTB_DATA_R= c[i]; //send numbers character by character
-		GPIO_D_Write('D',PIN1,HIGH); // set RS
-		GPIO_D_Write('D',PIN2,HIGH); // set ENABLE
-		GPIO_D_Write('D',PIN3,LOW); //clr rw aka write mode
+		GPIO_D_Write('E',PIN4,HIGH); // set RS
+		GPIO_D_Write('E',PIN2,HIGH); // set ENABLE
+		GPIO_D_Write('E',PIN3,LOW); //clr rw aka write mode
 		//delay_ms(1);
 		sys_tic_delay_ms(1);
-		GPIO_D_Write('D',PIN2,LOW); // clr ENABLE
+		GPIO_D_Write('E',PIN2,LOW); // clr ENABLE
 	}
 }
 
@@ -88,17 +89,17 @@ void LCD_sendCommand(uint8 command)
 {
 	//void DIO_WritePort(uint8 port_index, uint8 pins_mask, Dio_LevelType pins_level);
 	//DIO_WritePort(PORT_E, MASK_0, STD_LOW);
-	GPIO_D_Write('D',PIN1,LOW); //CLR RS
-	GPIO_D_Write('D',PIN3,LOW); // CLR RW
+	GPIO_D_Write('E',PIN4,LOW); //CLR RS
+	GPIO_D_Write('E',PIN3,LOW); // CLR RW
 	//delay_ms(1);
 	DATA = command;
 	sys_tic_delay_ms(1);
-	GPIO_D_Write('D',PIN2, HIGH); //SET ENABLE
+	GPIO_D_Write('E',PIN2, HIGH); //SET ENABLE
 	//delay_ms(1);
 	//sys_tic_delay_ms(200);
 	//DATA = command;
 	sys_tic_delay_ms(1);
-	GPIO_D_Write('D',PIN2,LOW); //CLR ENABLE
+	GPIO_D_Write('E',PIN2,LOW); //CLR ENABLE
 	//delay_ms(1);
 	sys_tic_delay_ms(1);	
 }
