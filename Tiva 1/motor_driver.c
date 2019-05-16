@@ -55,15 +55,17 @@ void move_step(int dir ,  uint8 mask , int port_in)
 		for (j=0; j<IN_NUM;j++)
 		{
 			sys_tic_delay_ms(2);
+
 			
-			if			(j==0)		{DIO_Set_Pin(port_in,IN_M[0]);DIO_Clear_Pin(port_in,IN_M[1]);DIO_Clear_Pin(port_in,IN_M[2]);DIO_Clear_Pin(port_in,IN_M[3]);}
-			else if	(j==1)		{DIO_Clear_Pin(port_in,IN_M[0]);DIO_Set_Pin(port_in,IN_M[1]);DIO_Clear_Pin(port_in,IN_M[2]);DIO_Clear_Pin(port_in,IN_M[3]);}
-			else if	(j==2)		{DIO_Clear_Pin(port_in,IN_M[0]);DIO_Clear_Pin(port_in,IN_M[1]);DIO_Set_Pin(port_in,IN_M[2]);DIO_Clear_Pin(port_in,IN_M[3]);}
-			else if (j==3)		{DIO_Clear_Pin(port_in,IN_M[0]);DIO_Clear_Pin(port_in,IN_M[1]);DIO_Clear_Pin(port_in,IN_M[2]);DIO_Set_Pin(port_in,IN_M[3]);}
-		}
+			
+			if		(j==0)		{GPIO_D_Write(port_in,(1<<IN_M[0]),HIGH);	GPIO_D_Write(port_in,(1<<IN_M[1]),LOW);		GPIO_D_Write(port_in,(1<<IN_M[2]),LOW); 	GPIO_D_Write(port_in,(1<<IN_M[3]),LOW); }
+			else if	(j==1)		{GPIO_D_Write(port_in,(1<<IN_M[0]),LOW);	GPIO_D_Write(port_in,(1<<IN_M[1]),HIGH);	GPIO_D_Write(port_in,(1<<IN_M[2]),LOW); 	GPIO_D_Write(port_in,(1<<IN_M[3]),LOW);	}
+			else if	(j==2)		{GPIO_D_Write(port_in,(1<<IN_M[0]),LOW);	GPIO_D_Write(port_in,(1<<IN_M[1]),LOW);		GPIO_D_Write(port_in,(1<<IN_M[2]),HIGH);	GPIO_D_Write(port_in,(1<<IN_M[3]),LOW);	}
+			else if (j==3)		{GPIO_D_Write(port_in,(1<<IN_M[0]),LOW);	GPIO_D_Write(port_in,(1<<IN_M[1]),LOW);		GPIO_D_Write(port_in,(1<<IN_M[3]),LOW); 	GPIO_D_Write(port_in,(1<<IN_M[3]),HIGH); }
+		
 		sys_tic_delay_ms(2);
 		GPIO_D_Write(port_in,0xFF,LOW);
-		
+		}
 	}
 		//IN4 IN3 IN2 IN1
 	else
@@ -72,10 +74,10 @@ void move_step(int dir ,  uint8 mask , int port_in)
 		{
 			sys_tic_delay_ms(2);
 			
-			if			(j==0)		{DIO_Set_Pin(port_in,IN_M[0]);DIO_Clear_Pin(port_in,IN_M[1]);DIO_Clear_Pin(port_in,IN_M[2]);DIO_Clear_Pin(port_in,IN_M[3]);}
-			else if	(j==1)		{DIO_Clear_Pin(port_in,IN_M[0]);DIO_Set_Pin(port_in,IN_M[1]);DIO_Clear_Pin(port_in,IN_M[2]);DIO_Clear_Pin(port_in,IN_M[3]);}
-			else if	(j==2)		{DIO_Clear_Pin(port_in,IN_M[0]);DIO_Clear_Pin(port_in,IN_M[1]);DIO_Set_Pin(port_in,IN_M[2]);DIO_Clear_Pin(port_in,IN_M[3]);}
-			else if (j==3)		{DIO_Clear_Pin(port_in,IN_M[0]);DIO_Clear_Pin(port_in,IN_M[1]);DIO_Clear_Pin(port_in,IN_M[2]);DIO_Set_Pin(port_in,IN_M[3]);}
+			if		(j==0)		{GPIO_D_Write(port_in,(1<<IN_M[0]),HIGH);	GPIO_D_Write(port_in,(1<<IN_M[1]),LOW);		GPIO_D_Write(port_in,(1<<IN_M[2]),LOW); 	GPIO_D_Write(port_in,(1<<IN_M[3]),LOW); }
+			else if	(j==1)		{GPIO_D_Write(port_in,(1<<IN_M[0]),LOW);	GPIO_D_Write(port_in,(1<<IN_M[1]),HIGH);	GPIO_D_Write(port_in,(1<<IN_M[2]),LOW); 	GPIO_D_Write(port_in,(1<<IN_M[3]),LOW);	}
+			else if	(j==2)		{GPIO_D_Write(port_in,(1<<IN_M[0]),LOW);	GPIO_D_Write(port_in,(1<<IN_M[1]),LOW);		GPIO_D_Write(port_in,(1<<IN_M[2]),HIGH);	GPIO_D_Write(port_in,(1<<IN_M[3]),LOW);	}
+			else if (j==3)		{GPIO_D_Write(port_in,(1<<IN_M[0]),LOW);	GPIO_D_Write(port_in,(1<<IN_M[1]),LOW);		GPIO_D_Write(port_in,(1<<IN_M[3]),LOW); 	GPIO_D_Write(port_in,(1<<IN_M[3]),HIGH); }
 		}
 		sys_tic_delay_ms(2);
 		GPIO_D_Write(port_in,0xFF,LOW);
