@@ -27,7 +27,7 @@ The system main components are:
 -[Click Here!](https://docs.google.com/document/d/1sdOux_4btl9iqQ43Cl9-vioZpm8LveC3fN1KwsFGH6w/edit?usp=sharing)
 
 ## Photo and Video
-Photo: [[https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/blob/master/SmartHomeProject.jpg|alt=photo]]
+Photo: [[https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/blob/master/SmartHomeProject.jpg]]
 
 ## Authors
 
