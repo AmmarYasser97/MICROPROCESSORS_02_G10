@@ -28,6 +28,7 @@ The system main components are:
 
 ## Photo and Video
 -[Photo](https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/blob/master/SmartHomeProject.jpg)
+
 -[Video](https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/blob/master/SmartHomeProjectVideo.MP4)
 
 ## Authors
