@@ -27,7 +27,8 @@ The system main components are:
 -[Click Here!](https://docs.google.com/document/d/1sdOux_4btl9iqQ43Cl9-vioZpm8LveC3fN1KwsFGH6w/edit?usp=sharing)
 
 ## Photo and Video
-[Photo](https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/blob/master/SmartHomeProject.jpg)
+-[Photo](https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/blob/master/SmartHomeProject.jpg)
+-[Video](https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/blob/master/SmartHomeProjectVideo.MP4)
 
 ## Authors
 
@@ -35,8 +36,8 @@ The system main components are:
 * **Mohamed Hesham** - [MHesham98](https://github.com/MHesham98)
 * **Omar Ibrahim** - [mr-rofl](https://github.com/mr-rofl)
 * **Omar Ahmed** - [omarahmad293](https://github.com/omarahmad293)
-* **Lames Emad** - [lameesemad1996](https://github.com/lameesemad1996)
-* **Matthew Email** - [Aominee](https://github.com/Aominee)
+* **Lamees Emad** - [lameesemad1996](https://github.com/lameesemad1996)
+* **Matthew Emile** - [Aominee](https://github.com/Aominee)
 * **Abdelrahman Wael Helaly** - [Helaly96](https://github.com/Helaly96)
 
 See also the list of [contributors](https://github.com/AmmarYasser97/MICROPROCESSORS_02_G10/graphs/contributors) who participated in this project.
