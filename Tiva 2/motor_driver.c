@@ -3,7 +3,7 @@
 
 
 // the indexes of the pin that are to be written
-int IN_M[IN_NUM];
+uint8 IN_M[IN_NUM];
 
 
 // if (n equals 512) this will lead to full rotation
@@ -12,8 +12,8 @@ int IN_M[IN_NUM];
 
 void motor_init(uint8 port_index , uint8 mask)
 {
-	//int index = 0;
-	//int i;
+	//uint8 index = 0;
+	//uint8 i;
 
 	
 	//inits the timer
@@ -28,13 +28,13 @@ void motor_init(uint8 port_index , uint8 mask)
 		
 }
 
-void move_step(int dir ,  uint8 mask , int port_in)
+void move_step(uint8 dir ,  uint8 mask , uint8 port_in)
 {
 	//counters
 	int j;
 	int i=0;
 	//counter of the IN Array that contains the pins that are masked
-	int index=0;
+	uint8 index=0;
 	
 	
 	// for loop to determine the pins
@@ -88,7 +88,7 @@ void move_step(int dir ,  uint8 mask , int port_in)
 	
 }
 
-void move_n_s(int n, int dir , uint8 mask ,  int port_in)
+void move_n_s(uint8 n, uint8 dir , uint8 mask ,  uint8 port_in)
 {
 	int i;
 	for (i=0;i<n;i++)
@@ -98,7 +98,7 @@ void move_n_s(int n, int dir , uint8 mask ,  int port_in)
 	
 }
 
-void move_30_deg(int dir , uint8 mask , int port_in)
+void move_30_deg(uint8 dir , uint8 mask , uint8 port_in)
 {
 	if (dir)
 	{
