@@ -3,7 +3,7 @@
 #include "Timer.h"
 #include "Temp_Sensor.h"
 #include "motor_driver.h"
-#include "LedController.h"
+#include "PWMController.h"
 
 void EnableInterrupts(void);
 void TIMER0A_Handler(void);
@@ -49,7 +49,7 @@ int main (void)
 			//UART_Write(0, '0' + pwm);
 			//UART_Write(0, ' ');
 			
-			LedSetDutyCycle(pwm);
+			PWMSetDutyCycle(pwm);
 		}
 	}
 	
@@ -77,5 +77,5 @@ void system_init(void)
 	//enables the temperature module
 	Temp_Init(AIN0, ADC_EMUX_EM3_PROCESSOR);
 	//Port enables
-	LedInit();
+	PWMInit(0x04);
 }

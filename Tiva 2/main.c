@@ -4,7 +4,6 @@
 #include "Timer.h"
 #include "Temp_Sensor.h"
 #include "Potentiometer.h"
-#include "LedController.h"
 #include "LCD.h"
 
 
